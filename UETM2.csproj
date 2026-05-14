@@ -5,6 +5,8 @@
 		<Nullable>enable</Nullable>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -19,11 +21,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Reference Include="ModBusHelper">
-			<HintPath>bin\Debug\net8.0\ModBusHelper.dll</HintPath>
-		</Reference>
-		<Reference Include="NModbus">
-			<HintPath>bin\Debug\net8.0\NModbus.dll</HintPath>
-		</Reference>
+	  <Reference Include="ModBusHelper">
+	    <HintPath>lib\ModBusHelper.dll</HintPath>
+	  </Reference>
+	  <Reference Include="NModbus">
+	    <HintPath>lib\NModbus.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 </Project>

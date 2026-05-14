@@ -1,20 +1,16 @@
-# Build output
-/bin/
-/obj/
-/publish/
+# Папки сборки
+obj/
+
+# Файлы сборки
+*.exe
+
+# Временные файлы
 *.user
 *.suo
-*.pdb
-*.exe
-*.dll
-*.so
-*.dylib
+*.cache
+*.tmp
 
-# Rider / Visual Studio
-.idea/
+# Файлы IDE
 .vs/
-*.userprefs
-
-# OS metadata
-.DS_Store
-Thumbs.db
+.idea/
+*.csproj.user
