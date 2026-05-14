@@ -1,0 +1,17 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="UETM2.AuthWindow"
+        Title="Авторизация" Width="300" Height="220"
+        WindowStartupLocation="CenterScreen" CanResize="False"
+        Background="Gainsboro">
+	<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="10" Width="150">
+		<TextBlock Text="Уровень доступа" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
+		<ComboBox x:Name="LoginComboBox" SelectedIndex="0" Width="150">
+			<ComboBoxItem>Администратор</ComboBoxItem>
+			<ComboBoxItem>Пользователь</ComboBoxItem>
+		</ComboBox>
+		<TextBlock Text="Пароль" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
+		<TextBox x:Name="PasswordTextBox" PasswordChar="*" Width="150" />
+		<Button Content="Войти" Click="button1_Click" HorizontalAlignment="Center" Width="60"/>
+	</StackPanel>
+</Window>

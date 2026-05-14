@@ -1,0 +1,20 @@
+# Build output
+/bin/
+/obj/
+/publish/
+*.user
+*.suo
+*.pdb
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Rider / Visual Studio
+.idea/
+.vs/
+*.userprefs
+
+# OS metadata
+.DS_Store
+Thumbs.db

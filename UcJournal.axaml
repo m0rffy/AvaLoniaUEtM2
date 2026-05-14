@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dg="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.DataGrid"
+             x:Class="UETM2.UcJournal"
+             Width="1000" Height="600"
+             Background="LightBlue">
+	<Grid Margin="10">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<Border Grid.Row="0" Padding="2">
+			<dg:DataGrid x:Name="journalDataGrid"
+                         AutoGenerateColumns="False"
+                         IsReadOnly="True"
+                         ItemsSource="{Binding JournalEntries}">
+				<dg:DataGrid.Columns>
+					<dg:DataGridTextColumn Header="№" Binding="{Binding Index}" Width="40"/>
+					<dg:DataGridTextColumn Header="Тип события" Binding="{Binding EventType}" Width="*"/>
+					<dg:DataGridTextColumn Header="Канал / IP" Binding="{Binding Source}" Width="*"/>
+					<dg:DataGridTextColumn Header="Дата и время" Binding="{Binding DateTime}" Width="*"/>
+					<dg:DataGridTextColumn Header="Ток (А)" Binding="{Binding CurrentA}" Width="*"/>
+					<dg:DataGridTextColumn Header="Ресурс (%)" Binding="{Binding ResourcePercent}" Width="*"/>
+				</dg:DataGrid.Columns>
+			</dg:DataGrid>
+		</Border>
+
+		<StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10" Margin="0,10">
+			<Button Content="Обновить журнал" FontSize="12" Click="UpdateJournalButton_Click"/>
+			<Button Content="Экспорт" FontSize="12" Click="ExportButton_Click"/>
+		</StackPanel>
+	</Grid>
+</UserControl>

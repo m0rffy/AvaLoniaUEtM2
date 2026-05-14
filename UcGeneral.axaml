@@ -1,0 +1,171 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dg="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.DataGrid"
+             x:Class="UETM2.UcGeneral"
+             Width="950" Height="600"
+             Background="LightBlue">
+    <UserControl.Styles>
+        <!-- Стили центрирования таблицы -->
+        <Style Selector="DataGridCell">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style Selector="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style Selector="DataGridCell TextBlock">
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Styles>
+    <ScrollViewer>
+        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto" Margin="6" HorizontalAlignment="Stretch">
+
+            <!-- Информация о выключателе -->
+            <Border Grid.Column="0" Grid.Row="0" BorderBrush="Gray" BorderThickness="1" Margin="0,0,6,3" Padding="3">
+                <StackPanel>
+                    <TextBlock Text="Информация о выключателе" FontWeight="Bold" Margin="0,0,0,3"/>
+                    <StackPanel Spacing="4" Margin="2">
+                        <Grid ColumnDefinitions="200, Auto">
+                            <TextBlock Text="Тип выключателя" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="switchTypeComboBox" Grid.Column="1" FontSize="12" Width="170" VerticalAlignment="Center" Margin="50,0,0,0"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="200, Auto">
+                            <TextBlock Text="Номинальный ток (А)" VerticalAlignment="Center"/>
+                            <TextBox x:Name="nominalCurrentTextBox" Grid.Column="1" FontSize="12" Width="170" VerticalAlignment="Center" Margin="50,0,0,0"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="200, Auto">
+                            <TextBlock Text="Номинальный ток отключения (кА)" VerticalAlignment="Center"/>
+                            <TextBox x:Name="maxCurrentTextBox" Grid.Column="1" FontSize="12" Width="170" VerticalAlignment="Center" Margin="50,0,0,0"/>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Место установки -->
+            <Border Grid.Column="1" Grid.Row="0" BorderBrush="Gray" BorderThickness="1" Margin="6,0,0,3" Padding="3">
+                <StackPanel>
+                    <TextBlock Text="Место установки" FontWeight="Bold" Margin="0,0,0,3"/>
+                    <StackPanel Spacing="4" Margin="2">
+                        <Grid ColumnDefinitions="250, Auto">
+                            <TextBlock Text="Место установки" VerticalAlignment="Center"/>
+                            <TextBox x:Name="installationPlaceTextBox" Grid.Column="1" FontSize="12" Width="160" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="250, Auto">
+                            <TextBlock Text="Тип изделия" VerticalAlignment="Center"/>
+                            <TextBox x:Name="switchModelTextBox" Grid.Column="1" FontSize="12" Width="160" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="250, Auto">
+                            <TextBlock Text="Обозначение выключателя на схеме" VerticalAlignment="Center"/>
+                            <TextBox x:Name="switchLabelTextBox" Grid.Column="1" FontSize="12" Width="160" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Настройка алгоритма расчета -->
+            <Border Grid.Column="0" Grid.Row="1" BorderBrush="Gray" BorderThickness="1" Margin="0,0,6,3" Padding="3">
+                <StackPanel>
+                    <TextBlock Text="Настройка алгоритма расчета" FontWeight="Bold" Margin="0,0,0,3"/>
+                    <StackPanel Spacing="4" Margin="2">
+                        <Grid ColumnDefinitions="290, Auto">
+                            <TextBlock Text="Ток порога нечувствительности (А)" VerticalAlignment="Center"/>
+                            <TextBox x:Name="thresholdCurrentTextBox" Grid.Column="1" FontSize="12" Width="80" VerticalAlignment="Center" Margin="30,0,0,0"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="290, Auto">
+                            <TextBlock Text="Номинальное количество отключений" VerticalAlignment="Center"/>
+                            <TextBox x:Name="nominalOperationsTextBox" Grid.Column="1" FontSize="12" Width="80" VerticalAlignment="Center" Margin="30,0,0,0"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="290, Auto">
+                            <TextBlock Text="Порог предупредительной сигнализации (%)" VerticalAlignment="Center"/>
+                            <TextBox x:Name="warningThresholdTextBox" Grid.Column="1" FontSize="12" IsReadOnly="True" Background="LightGray" Text="80" Width="80" VerticalAlignment="Center" Margin="30,0,0,0"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="290, Auto">
+                            <TextBlock Text="Порог аварийной сигнализации (%)" VerticalAlignment="Center"/>
+                            <TextBox x:Name="alarmThresholdTextBox" Grid.Column="1" FontSize="12" IsReadOnly="True" Background="LightGray" Text="100" Width="80" VerticalAlignment="Center" Margin="30,0,0,0"/>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Коэффициенты полинома -->
+            <Border Grid.Column="1" Grid.Row="1" BorderBrush="Gray" BorderThickness="1" Margin="6,0,0,3" Padding="3">
+                <StackPanel>
+                    <TextBlock Text="Коэффициенты полинома аппроксимации" FontWeight="Bold" Margin="0,0,0,3"/>
+                    <StackPanel Spacing="4" Margin="2">
+                        <Grid ColumnDefinitions="20, Auto">
+                            <TextBlock Text="C1:" VerticalAlignment="Center"/>
+                            <TextBox x:Name="c1TextBox" Grid.Column="1" FontSize="12" Width="100" VerticalAlignment="Center" Margin="50,0,0,0"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="20, Auto">
+                            <TextBlock Text="C2:" VerticalAlignment="Center"/>
+                            <TextBox x:Name="c2TextBox" Grid.Column="1" FontSize="12" Width="100" VerticalAlignment="Center" Margin="50,0,0,0"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="20, Auto">
+                            <TextBlock Text="C3:" VerticalAlignment="Center"/>
+                            <TextBox x:Name="c3TextBox" Grid.Column="1" FontSize="12" Width="100" VerticalAlignment="Center" Margin="50,0,0,0"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="20, Auto">
+                            <TextBlock Text="C4:" VerticalAlignment="Center"/>
+                            <TextBox x:Name="c4TextBox" Grid.Column="1" FontSize="12" Width="100" VerticalAlignment="Center" Margin="50,0,0,0"/>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Время защиты от дребезга -->
+            <Border Grid.Column="0" Grid.Row="2" BorderBrush="Gray" BorderThickness="1" Margin="0,0,6,3" Padding="3">
+                <StackPanel>
+                    <TextBlock Text="Время защиты от дребезга (мс)" FontWeight="Bold" Margin="0,0,0,3"/>
+                    <StackPanel Spacing="4" Margin="2">
+                        <Grid ColumnDefinitions="110, Auto">
+                            <TextBlock Text="При отключении" VerticalAlignment="Center"/>
+                            <TextBox x:Name="debounceOffTextBox" Grid.Column="1" FontSize="12" Width="70" VerticalAlignment="Center" Margin="40,0,0,0"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="110, Auto">
+                            <TextBlock Text="При включении" VerticalAlignment="Center"/>
+                            <TextBox x:Name="debounceOnTextBox" Grid.Column="1" FontSize="12" Width="70" VerticalAlignment="Center" Margin="40,0,0,0"/>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Первичный датчик -->
+            <Border Grid.Column="1" Grid.Row="2" BorderBrush="Gray" BorderThickness="1" Margin="6,0,0,3" Padding="3">
+                <StackPanel>
+                    <TextBlock Text="Первичный датчик (трансформатор тока)" FontWeight="Bold" Margin="0,0,0,3"/>
+                    <StackPanel Spacing="4" Margin="2">
+                        <Grid ColumnDefinitions="230, Auto">
+                            <TextBlock Text="Номинальный первичный ток (А)" VerticalAlignment="Center"/>
+                            <TextBox x:Name="primaryCurrentTextBox" Grid.Column="1" FontSize="12" Width="70" VerticalAlignment="Center" Margin="30,0,0,0"/>
+                        </Grid>
+                        <Grid ColumnDefinitions="230, Auto">
+                            <TextBlock Text="Номинальный вторичный ток (А)" VerticalAlignment="Center"/>
+                            <TextBox x:Name="secondaryCurrentTextBox" Grid.Column="1" FontSize="12" Width="70" VerticalAlignment="Center" Margin="30,0,0,0"/>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Таблица (растянута на всю ширину, содержимое центрировано) -->
+            <Border Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Padding="2" Margin="0,3,0,0" HorizontalAlignment="Stretch">
+                <Grid RowDefinitions="Auto,Auto">
+                    <TextBlock Text="Запаздывание/опережение срабатывания вспомогательного контакта относительно главного, мс"
+                               FontWeight="Bold" Margin="3" HorizontalAlignment="Center"/>
+                    <dg:DataGrid Grid.Row="1" x:Name="delayDataGrid"
+                                 AutoGenerateColumns="False" IsReadOnly="False"
+                                 ItemsSource="{Binding DelayRecords}"
+                                 VerticalAlignment="Top"
+                                 HorizontalAlignment="Stretch">
+                        <dg:DataGrid.Columns>
+                            <dg:DataGridTextColumn Header="Канал" Binding="{Binding Channel}" IsReadOnly="True" Width="*"/>
+                            <dg:DataGridTextColumn Header="Задержка отключения (мс)" Binding="{Binding OffDelay}" Width="*"/>
+                            <dg:DataGridTextColumn Header="Задержка включения (мс)" Binding="{Binding OnDelay}" Width="*"/>
+                        </dg:DataGrid.Columns>
+                    </dg:DataGrid>
+                </Grid>
+            </Border>
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>

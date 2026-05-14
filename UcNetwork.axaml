@@ -1,0 +1,50 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="UETM2.UcNetwork"
+             Width="480"
+             HorizontalAlignment="Center"
+             Background="LightBlue">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Spacing="12" Width="420">
+
+            <!-- Блок Ethernet -->
+            <Border BorderBrush="Gray" BorderThickness="1" Padding="6" HorizontalAlignment="Stretch">
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Ethernet" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <Grid ColumnDefinitions="Auto, Auto">
+                        <TextBlock Grid.Column="0" Text="MAC адрес" VerticalAlignment="Center" Width="120"/>
+                        <TextBox Grid.Column="1" x:Name="macTextBox" FontSize="12" Width="180" VerticalAlignment="Center" Margin="50,0,0,0"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="Auto, Auto">
+                        <TextBlock Grid.Column="0" Text="IP адрес" VerticalAlignment="Center" Width="120"/>
+                        <TextBox Grid.Column="1" x:Name="ipTextBox" FontSize="12" Width="180" VerticalAlignment="Center" Margin="50,0,0,0"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="Auto, Auto">
+                        <TextBlock Grid.Column="0" Text="Маска подсети" VerticalAlignment="Center" Width="120"/>
+                        <TextBox Grid.Column="1" x:Name="maskTextBox" FontSize="12" Width="180" VerticalAlignment="Center" Margin="50,0,0,0"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- Блок PTPv2 -->
+            <Border BorderBrush="Gray" BorderThickness="1" Padding="6" HorizontalAlignment="Stretch">
+                <StackPanel Spacing="8">
+                    <TextBlock Text="PTPv2" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <Grid ColumnDefinitions="Auto, Auto">
+                        <TextBlock Grid.Column="0" Text="MAC мастер часов" VerticalAlignment="Center" Width="120"/>
+                        <TextBox Grid.Column="1" x:Name="ptpMasterMacTextBox" FontSize="12" Width="180" VerticalAlignment="Center" Margin="50,0,0,0"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="Auto, Auto">
+                        <TextBlock Grid.Column="0" Text="Порт" VerticalAlignment="Center" Width="120"/>
+                        <TextBox Grid.Column="1" x:Name="ptpPortTextBox" FontSize="12" Width="180" VerticalAlignment="Center" Margin="50,0,0,0"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="Auto, Auto">
+                        <TextBlock Grid.Column="0" Text="Идентификатор" VerticalAlignment="Center" Width="120"/>
+                        <TextBox Grid.Column="1" x:Name="ptpIdTextBox" FontSize="12" Width="180" VerticalAlignment="Center" Margin="50,0,0,0"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

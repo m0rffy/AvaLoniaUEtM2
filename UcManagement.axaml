@@ -1,0 +1,97 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dg="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.DataGrid"
+             x:Class="UETM2.UcManagement"
+             Width="700" Height="700"
+             Background="LightBlue">
+	<Grid Margin="10">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<!-- IP / Port / Добавить – центрированы -->
+		<StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+			<TextBlock Text="IP:" VerticalAlignment="Center"/>
+			<TextBox x:Name="ipTextBox" Width="130"/>
+			<TextBlock Text="Порт:" VerticalAlignment="Center"/>
+			<TextBox x:Name="portTextBox" Width="50"/>
+			<Button x:Name="addDeviceButton" Content="Добавить устройство" Click="AddDeviceButton_Click"/>
+		</StackPanel>
+
+		<!-- Кнопки управления – центрированы -->
+		<StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal" Spacing="10" Margin="0,5">
+			<Button Content="Очистить значения по ресурсу" Click="ClearResourceButton_Click"/>
+			<Button Content="Задать дату и время" Click="SetTimeButton_Click"/>
+			<Button Content="Перезагрузить устройство" Click="RebootButton_Click"/>
+		</StackPanel>
+
+		<!-- RMS таблица – без лишнего пространства снизу -->
+		<Border Grid.Row="2" Margin="0,5" Padding="2">
+			<Grid RowDefinitions="Auto,Auto">
+				<TextBlock Text="Действующее значение тока (А)" FontWeight="Bold" Margin="3"/>
+				<dg:DataGrid Grid.Row="1" x:Name="rmsDataGrid"
+                             AutoGenerateColumns="False" IsReadOnly="True"
+                             ItemsSource="{Binding RmsRecords}"
+                             VerticalAlignment="Top">
+					<dg:DataGrid.Columns>
+						<dg:DataGridTextColumn Header="Канал" Binding="{Binding Channel}" Width="80"/>
+						<dg:DataGridTextColumn Header="Значение (А)" Binding="{Binding Value, StringFormat={}{0:F2}}" Width="*"/>
+					</dg:DataGrid.Columns>
+				</dg:DataGrid>
+			</Grid>
+		</Border>
+
+		<!-- CNTV таблица – без лишнего пространства снизу -->
+		<Border Grid.Row="3" Margin="0,5" Padding="2">
+			<Grid RowDefinitions="Auto,Auto">
+				<TextBlock Text="Значения по ресурсу" FontWeight="Bold" Margin="3"/>
+				<dg:DataGrid Grid.Row="1" x:Name="cntvDataGrid"
+                             AutoGenerateColumns="False" IsReadOnly="True"
+                             ItemsSource="{Binding CntvRecords}"
+                             VerticalAlignment="Top">
+					<dg:DataGrid.Columns>
+						<dg:DataGridTextColumn Header="Канал" Binding="{Binding Channel}" Width="80"/>
+						<dg:DataGridTextColumn Header="Выработанный ресурс (%)" Binding="{Binding Resource, StringFormat={}{0:F2}}" Width="1.1*"/>
+						<dg:DataGridTextColumn Header="Количество отключений" Binding="{Binding OffCount}" Width="*"/>
+						<dg:DataGridTextColumn Header="Количество включений" Binding="{Binding OnCount}" Width="*"/>
+					</dg:DataGrid.Columns>
+				</dg:DataGrid>
+			</Grid>
+		</Border>
+
+		<!-- Статус устройства -->
+		<Border Grid.Row="4" BorderBrush="Gray" BorderThickness="1" Margin="0,5" Padding="5">
+			<StackPanel Spacing="2" HorizontalAlignment="Center">
+				<TextBlock Text="Статус устройства" FontWeight="Bold" HorizontalAlignment="Center"/>
+				<Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" HorizontalAlignment="Center">
+					<TextBlock Grid.Row="0" Grid.Column="0" Text="Устройство в работе:" VerticalAlignment="Center"/>
+					<TextBlock x:Name="deviceStatusLabel" Grid.Row="0" Grid.Column="1" Text="Нет связи" Margin="5,0"/>
+					<TextBlock Grid.Row="1" Grid.Column="0" Text="Синхронизация PTPv2:" VerticalAlignment="Center"/>
+					<TextBlock x:Name="syncStatusLabel" Grid.Row="1" Grid.Column="1" Text="Нет связи" Margin="5,0"/>
+					<TextBlock Grid.Row="2" Grid.Column="0" Text="Внутренние часы:" VerticalAlignment="Center"/>
+					<TextBlock x:Name="rtcStatusLabel" Grid.Row="2" Grid.Column="1" Text="Нет связи" Margin="5,0"/>
+				</Grid>
+			</StackPanel>
+		</Border>
+
+		<!-- Информация об устройстве -->
+		<Border Grid.Row="5" BorderBrush="Gray" BorderThickness="1" Margin="0,5" Padding="5">
+			<StackPanel Spacing="2" HorizontalAlignment="Center">
+				<TextBlock Text="Информация об устройстве" FontWeight="Bold" HorizontalAlignment="Center"/>
+				<Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto" HorizontalAlignment="Center">
+					<TextBlock Grid.Row="0" Grid.Column="0" Text="Серийный номер:" VerticalAlignment="Center"/>
+					<TextBlock x:Name="serialNumberLabel" Grid.Row="0" Grid.Column="1" Text="Нет связи" Margin="5,0"/>
+					<TextBlock Grid.Row="1" Grid.Column="0" Text="Версия прошивки:" VerticalAlignment="Center"/>
+					<TextBlock x:Name="firmwareVersionLabel" Grid.Row="1" Grid.Column="1" Text="Нет связи" Margin="5,0"/>
+					<TextBlock Grid.Row="2" Grid.Column="0" Text="Время платы:" VerticalAlignment="Center"/>
+					<TextBlock x:Name="deviceTimeLabel" Grid.Row="2" Grid.Column="1" Text="Нет связи" Margin="5,0"/>
+				</Grid>
+			</StackPanel>
+		</Border>
+	</Grid>
+</UserControl>

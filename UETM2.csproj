@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Avalonia" Version="11.3.8" />
+		<PackageReference Include="Avalonia.Controls.DataGrid" Version="11.3.8" />
+		<PackageReference Include="Avalonia.Desktop" Version="11.3.8" />
+		<PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.8" />
+		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.8" />
+		<PackageReference Include="EPPlus" Version="8.5.4" />
+		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
+
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="ModBusHelper">
+			<HintPath>bin\Debug\net8.0\ModBusHelper.dll</HintPath>
+		</Reference>
+		<Reference Include="NModbus">
+			<HintPath>bin\Debug\net8.0\NModbus.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+</Project>

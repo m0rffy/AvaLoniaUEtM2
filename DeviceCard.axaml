@@ -1,0 +1,17 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="UETM2.DeviceCard"
+             Width="200" Height="120">
+	<Border BorderBrush="Black" BorderThickness="1" Background="LightGray" x:Name="cardBorder"
+            Padding="6">
+		<StackPanel Spacing="6" VerticalAlignment="Center">
+			<TextBlock x:Name="switchLabelName" Text="-" TextAlignment="Center" FontSize="12"/>
+			<TextBlock x:Name="ipLabel" Text="-" TextAlignment="Center" Margin="0,2" FontSize="12"/>
+			<TextBlock x:Name="placeLabel" Text="-" TextAlignment="Center" FontSize="12"/>
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8">
+				<Button Content="Удалить" FontSize="11" Click="deleteButton_Click"/>
+				<Button x:Name="connectButton" Content="Подключиться" FontSize="11" Click="connectButton_Click"/>
+			</StackPanel>
+		</StackPanel>
+	</Border>
+</UserControl>
