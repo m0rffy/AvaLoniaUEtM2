@@ -1,16 +1,14 @@
-# Папки сборки
-obj/
-
-# Файлы сборки
-*.exe
-
-# Временные файлы
+# Build output
+/bin/
+/obj/
+/publish/
 *.user
 *.suo
-*.cache
-*.tmp
 
-# Файлы IDE
+# IDE
 .vs/
 .idea/
-*.csproj.user
+
+# OS metadata
+.DS_Store
+Thumbs.db
