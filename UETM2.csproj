@@ -7,6 +7,9 @@
 		<AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
 		<DebugType>none</DebugType>
 		<DebugSymbols>false</DebugSymbols>
+		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+
+		<ApplicationIcon>logo\icon_min.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -17,15 +20,19 @@
 		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.8" />
 		<PackageReference Include="EPPlus" Version="8.5.4" />
 		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
-
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Reference Include="ModBusHelper">
-	    <HintPath>lib\ModBusHelper.dll</HintPath>
-	  </Reference>
-	  <Reference Include="NModbus">
-	    <HintPath>lib\NModbus.dll</HintPath>
-	  </Reference>
+		<Reference Include="ModBusHelper">
+			<HintPath>lib\ModBusHelper.dll</HintPath>
+		</Reference>
+		<Reference Include="NModbus">
+			<HintPath>lib\NModbus.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<!-- Добавляем PNG-иконку как ресурс для окна (кросс-платформенно) -->
+	<ItemGroup>
+		<AvaloniaResource Include="logo\icon.png" />
 	</ItemGroup>
 </Project>

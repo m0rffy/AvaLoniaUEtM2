@@ -3,7 +3,9 @@
         x:Class="UETM2.ConfiguratorWindow"
         Title="Конфигуратор УЭТМ" Width="1600" Height="800"
         WindowStartupLocation="CenterScreen" CanResize="False"
+		Icon="\logo\icon.png"
         Background="LightBlue">
+
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="150"/>
